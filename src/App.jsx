@@ -7,6 +7,7 @@ import Product from './page/Product'
 import User from './components/User'
 import Producer from './page/Producer'
 import Employee from './components/Employee'
+import Category from './page/Category'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
       {
         path: 'producer',
         element: <Producer/>
+      },
+      {
+        path: 'category',
+        element: <Category/>
       },
     ]
   }

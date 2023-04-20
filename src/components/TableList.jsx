@@ -1,17 +1,18 @@
 import React from 'react';
+import Rows from './Rows';
 
-function TableList({col,row,handleDelete}) {
+function TableList({col,row,handleDelete,handleValueUpdate,type}) {
     return (
-        <div className='flex flex-col gap-2'>
-            <div className='flex items-center gap-2'>
-                {col.map((item,index)=>(
-                    <div className=" font-bold  overflow-hidden whitespace-nowrap w-[200px]" key={index}>{item}</div>
-                ))}
-                <div className='font-bold  overflow-hidden whitespace-nowrap w-[200px]'>Action</div>
+        <div className='flex flex-col gap-2 overflow-auto'>
+            <div className='flex items-center gap-2 bg-slate-400 py-2 w-fit'>
+                {col?.map((item,index)=>(
+                    <div className=" font-bold  overflow-hidden whitespace-nowrap w-[200px] flex-shrink-0" key={index}>{item}</div>
+                ))|| 'Loading...'}
+                <div className='font-bold  overflow-hidden whitespace-nowrap w-[200px] flex-shrink-0'>Action</div>
             </div>
             <div className='flex flex-col'>
-                {row?.map((item,index)=>(
-                    <div className={`flex items-center gap-2  ${index%2===0 && 'bg-slate-200'} py-2`} key={index}>
+                {/* {row?.map((item,index)=>(
+                    <div className={`flex items-center gap-2  ${index%2===0 && 'bg-slate-200'} py-2`} key={index} onClick={()=>handleValueUpdate(item)}>
                         <div className=' overflow-hidden whitespace-nowrap w-[200px]'>{item._id}</div> 
                         <div className=' overflow-hidden whitespace-nowrap w-[200px]'>{item.name}</div>
                         <div className=' overflow-hidden whitespace-nowrap w-[200px]'>{item.address}</div>
@@ -21,7 +22,8 @@ function TableList({col,row,handleDelete}) {
                             Delete
                         </button>
                     </div>
-                ))}
+                ))} */}
+                <Rows handleDelete={handleDelete} handleValueUpdate={handleValueUpdate} type={type} row={row}/>
             </div>
         </div>
     );
