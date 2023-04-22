@@ -24,25 +24,25 @@ function Producer(props) {
       label: 'Name',
       type: 'text',
       placeholder: 'Enter your content...',
-      handlers: value => dispatchProducer({ type: 'setName', payload: value })
+      handlers: e => dispatchProducer({ type: 'setName', payload:  e.target.value  })
     },
     {
       label: 'Address',
       type: 'text',
       placeholder: 'Enter your content...',
-      handlers: value => dispatchProducer({ type: 'setAddress', payload: value })
+      handlers: e => dispatchProducer({ type: 'setAddress', payload:  e.target.value  })
     },
     {
       label: 'Phone',
       type: 'text',
       placeholder: 'Enter your content...',
-      handlers: value => dispatchProducer({ type: 'setPhone', payload: value })
+      handlers: e => dispatchProducer({ type: 'setPhone', payload:  e.target.value  })
     },
     {
       label: 'Fax',
       type: 'text',
       placeholder: 'Enter your content...',
-      handlers: value => dispatchProducer({ type: 'setFax', payload: value })
+      handlers: e => dispatchProducer({ type: 'setFax', payload:  e.target.value  })
     },
   ]
   const fetchProducer = async () => {

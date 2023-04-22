@@ -10,14 +10,14 @@ const col = [
 function Category(props) {
     const [category, setCategory] = useState(null)
     const [categoryCreate, dispatchCategoryCreate] = useReducer(categoryReducer.create.reducer, categoryReducer.create.init)
-    const [categoryUpdate, dispatchCategoryUpdate] = useReducer(categoryReducer.create.reducer, categoryReducer.create.init)
+    const [categoryUpdate, dispatchCategoryUpdate] = useReducer(categoryReducer.update.reducer, categoryReducer.update.init)
     const inputs = {
         create: [
             {
                 label: 'Name',
                 placeholder: 'Enter your content...',
                 type: 'text',
-                handlers: value => dispatchCategoryCreate({ type: 'setName', payload: value })
+                handlers: e => dispatchCategoryCreate({ type: 'setName', payload: e.target.value })
             }
         ],
         update: [
@@ -25,7 +25,7 @@ function Category(props) {
                 label: 'Name',
                 placeholder: 'Enter your content...',
                 type: 'text',
-                handlers: value => dispatchCategoryUpdate({ type: 'setName', payload: value })
+                handlers: e => dispatchCategoryUpdate({ type: 'setName', payload: e.target.value })
             }
         ]
     }
@@ -34,7 +34,6 @@ function Category(props) {
             const res = await fetch(`${import.meta.env.VITE_SERVER}/category`)
             const data = await res.json()
             setCategory(data)
-            console.log(data)
         } catch (error) {
             console.log(error)
         }
@@ -58,15 +57,39 @@ function Category(props) {
         }
     })
     const handleDelete = useCallback(async id => {
-
+        try {
+            const res = await fetch(`${import.meta.env.VITE_SERVER}/category/delete/${id}`, {
+              method: 'delete'
+            })
+            const feedback = await res.json()
+            getCategory()
+            console.log(feedback)
+          } catch (error) {
+            console.log(error)
+          }
     }, [])
     const handleValueUpdate = useCallback(item => {
-        dispatchCategoryUpdate({ type: 'setId', playload: item._id })
-        dispatchCategoryUpdate({ type: 'setId', playload: item.name })
+        dispatchCategoryUpdate({ type: 'setId', payload: item._id })
+        dispatchCategoryUpdate({ type: 'setName', payload: item.name })
     }, [])
     const handleUpdate = useCallback(async () => {
-
-    })
+        try {
+            const res =await fetch(`${import.meta.env.VITE_SERVER}/category/update`,{
+              method: 'put',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({
+                ...categoryUpdate
+              })
+            })
+            const feedback = await res.json()
+            console.log(feedback)
+            getCategory()
+          } catch (error) {
+            console.log(error)
+          }
+    },[categoryUpdate])
     useEffect(() => {
         getCategory()
     }, [])

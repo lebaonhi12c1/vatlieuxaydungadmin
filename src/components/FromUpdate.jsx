@@ -1,7 +1,7 @@
 import React from 'react';
 
-function FromUpdate({ data, handleSubmit, initValue,type }) {
-    const getProductValue = type => {
+function FromUpdate({ data, handleSubmit, initValue, type }) {
+    const getProducerValue = type => {
         switch (type) {
             case 'Name':
 
@@ -20,7 +20,19 @@ function FromUpdate({ data, handleSubmit, initValue,type }) {
                 break;
         }
     }
-    const getCategoryValue = type=>{
+    const getProductValue = type => {
+        switch (type) {
+            case 'Name':
+                return initValue.name
+            case 'Quantity':
+                return initValue.quantity
+            case 'Price':
+                return initValue.price
+            default:
+                break;
+        }
+    }
+    const getCategoryValue = type => {
         switch (type) {
             case 'Name':
                 return initValue.name
@@ -30,27 +42,29 @@ function FromUpdate({ data, handleSubmit, initValue,type }) {
     }
     const getType = value => {
         switch (type) {
-            case 'product':
-                return getProductValue(value)
+            case 'producer':
+                return getProducerValue(value)
             case 'category':
                 return getCategoryValue(value)
+            case 'product':
+                return getProductValue(value)
             default:
                 break;
         }
     }
 
     return (
-        <div className='flex flex-col gap-2 p-4 border border-slate-200 rounded-sm'>
+        <div className='flex flex-col gap-2  rounded-sm'>
             {data?.map((item, index) => {
                 return (
                     <div className="flex flex-col gap-2 w-full" key={index}>
                         <label htmlFor={item.label}>{item.label}</label>
                         <input
                             value={getType(item.label)}
-                            type="text"
+                            type={item.type}
                             placeholder={item.placeholder}
                             className=" border border-slate-200 rounded-lg py-3 px-5 outline-none  bg-transparent"
-                            onChange={e => item.handlers(e.target.value)}
+                            onChange={e => item.handlers(e)}
                         />
                     </div>
                 )
