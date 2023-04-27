@@ -60,9 +60,7 @@ function Producer(props) {
     fetchProducer()
   }, [])
   const handleSubmit = useCallback(async () => {
-    console.log(producer)
     try {
-      console.log(producer.name)
       const res = await fetch(`${import.meta.env.VITE_SERVER}/producer/create`, {
         method: 'post',
         headers: {

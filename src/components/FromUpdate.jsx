@@ -40,6 +40,42 @@ function FromUpdate({ data, handleSubmit, initValue, type }) {
                 break;
         }
     }
+    const getUserValue = type => {
+        switch (type) {
+            case 'Name':
+                return initValue.name
+            case 'Username':
+                return initValue.username
+            case 'Password':
+                return initValue.password
+            case 'Email':
+                return initValue.email
+            case 'Phone':
+                return initValue.phone
+            case 'Address':
+                return initValue.address
+            default:
+                break;
+        }
+    }
+    const getEmployeeVlalue = type => {
+        switch (type) {
+            case 'Name':
+                return initValue.name
+            case 'Username':
+                return initValue.username
+            case 'Password':
+                return initValue.password
+            case 'Email':
+                return initValue.email
+            case 'Phone':
+                return initValue.phone
+            case 'Address':
+                return initValue.address
+            default:
+                break;
+        }
+    }
     const getType = value => {
         switch (type) {
             case 'producer':
@@ -48,6 +84,10 @@ function FromUpdate({ data, handleSubmit, initValue, type }) {
                 return getCategoryValue(value)
             case 'product':
                 return getProductValue(value)
+            case 'user':
+                return getUserValue(value)
+            case 'employee':
+                return getEmployeeVlalue(value)
             default:
                 break;
         }

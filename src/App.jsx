@@ -4,9 +4,9 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import Defaultlayout from './layout/Defaultlayout'
 import Home from './page/Home'
 import Product from './page/Product'
-import User from './components/User'
+import User from './page/User'
 import Producer from './page/Producer'
-import Employee from './components/Employee'
+import Employee from './page/Employee'
 import Category from './page/Category'
 const router = createBrowserRouter([
   {
