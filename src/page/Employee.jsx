@@ -228,7 +228,7 @@ function Employee(props) {
                     <div className='flex flex-col gap-2'>
                     <div className='flex flex-col gap-2'>
                             <label htmlFor="producer">Position</label>
-                            <select value={employeeUpdate.position} name="category" id="" className='border border-slate-300 py-1 px-2 rounded-sm' onChange={(e) => setEmployee({ ...employee, position: e.target.value })}>
+                            <select value={employeeUpdate.position} name="category" id="" className='border border-slate-300 py-1 px-2 rounded-sm' onChange={(e) => setEmployee({ ...employeeUpdate, position: e.target.value })}>
                                 <option value="Basic">Basic</option>
                                 <option value="Manager">Manager</option>
                             </select>
