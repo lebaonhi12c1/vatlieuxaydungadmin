@@ -1,9 +1,13 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import Slibar from '../components/Slibar';
 function Defaultlayout(props) {
+    const navigation = useNavigate()
+    useEffect(()=>{
+        !localStorage.getItem('user') && navigation('/login')
+    },[])
     return (
         <div className='root-container'>
             <div className='grid grid-cols-5'>

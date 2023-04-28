@@ -21,6 +21,7 @@ function Slibar(props) {
                         <Link to={'/producer'} className={`px-8 py-2 text-white ${getActive('producer') && 'bg-orange-600'}`}>producer</Link>
                         <Link to={'/product'} className={`px-8 py-2 text-white ${getActive('product') && 'bg-orange-600'}`}>product</Link>
                         <Link to={'/category'} className={`px-8 py-2 text-white ${getActive('category') && 'bg-orange-600'}`}>category</Link>
+                        <Link to={'/order'} className={`px-8 py-2 text-white ${getActive('order') && 'bg-orange-600'}`}>order</Link>
                     </div>
                 </div>
             </div>

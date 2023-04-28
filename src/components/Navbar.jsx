@@ -1,6 +1,12 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function Navbar(props) {
+    const navigation = useNavigate()
+    const handleLogout = ()=>{
+      localStorage.removeItem('user')
+      navigation('/login')
+    }
     return (
         <div className=' h-[80px] shadow-md shadow-slate-200 flex items-center justify-end px-10 gap-10'>
             <div className="flex items-center gap-5 w-[300px] border border-gray-200 rounded-lg py-3 px-5">
@@ -51,6 +57,9 @@ function Navbar(props) {
             <div className=''>
                 adminname
             </div>
+            <button className='text-white py-1 px-2 bg-orange-600 rounded-sm hover:scale-105 duration-150 active:scale-90' onClick={handleLogout}>
+              Logout
+            </button>
         </div>
     );
 }

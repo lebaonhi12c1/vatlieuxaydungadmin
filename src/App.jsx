@@ -8,6 +8,8 @@ import User from './page/User'
 import Producer from './page/Producer'
 import Employee from './page/Employee'
 import Category from './page/Category'
+import Login from './page/Login'
+import Order from './page/Order'
 const router = createBrowserRouter([
   {
     path: '/',
@@ -37,7 +39,15 @@ const router = createBrowserRouter([
         path: 'category',
         element: <Category/>
       },
+      {
+        path: 'order',
+        element: <Order/>
+      },
     ]
+  }
+  ,{
+    path: '/login',
+    element: <Login/>
   }
 ])
 function App() {

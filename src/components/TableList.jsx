@@ -1,7 +1,7 @@
 import React from 'react';
 import Rows from './Rows';
 
-function TableList({col,row,handleDelete,handleValueUpdate,type}) {
+function TableList({col,row,handleDelete,handleValueUpdate,type,handleAccept}) {
     return (
         <div className='flex flex-col gap-2 overflow-auto'>
             <div className='flex items-center gap-2 bg-slate-400 py-2 w-fit'>
@@ -23,7 +23,7 @@ function TableList({col,row,handleDelete,handleValueUpdate,type}) {
                         </button>
                     </div>
                 ))} */}
-                <Rows handleDelete={handleDelete} handleValueUpdate={handleValueUpdate} type={type} row={row}/>
+                <Rows handleDelete={handleDelete} handleValueUpdate={handleValueUpdate} type={type} row={row} handleAccept={handleAccept}/>
             </div>
         </div>
     );
