@@ -1,8 +1,8 @@
 import React from 'react';
 
 function Rows({ row, type, handleDelete, handleValueUpdate, handleAccept }) {
-    const getStyleStatusOrder = type => {
-        switch (type) {
+    const getStyleStatusOrder = value => {
+        switch (value) {
             case 'pending':
                 return 'bg-slate-300'
             case 'confirmed':
@@ -120,7 +120,7 @@ function Rows({ row, type, handleDelete, handleValueUpdate, handleAccept }) {
                 return (
                     <div className="">
                         {row?.map((item, index) => (
-                            <div className={`flex items-center gap-2  ${index % 2 === 0 && 'bg-slate-200'} py-2 w-fit`} key={index}>
+                            <div className={`flex items-center gap-2  ${index % 2 === 0 && 'bg-slate-200'} py-2 w-fit`} key={index} onClick={()=>handleValueUpdate(item)}>
                                 <div className=' overflow-hidden whitespace-nowrap w-[200px] flex-shrink-0'>{item._id}</div>
                                 <div className=' overflow-hidden whitespace-nowrap w-[200px] flex-shrink-0'>{item.customerid.name}</div>
                                 <div className=' overflow-hidden whitespace-nowrap w-[200px] flex-shrink-0'>{item.sumary}</div>

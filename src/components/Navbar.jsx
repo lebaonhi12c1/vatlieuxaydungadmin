@@ -55,7 +55,7 @@ function Navbar(props) {
               </svg>
             </div>
             <div className=''>
-                adminname
+                {JSON.parse(localStorage.getItem('user')).name}
             </div>
             <button className='text-white py-1 px-2 bg-orange-600 rounded-sm hover:scale-105 duration-150 active:scale-90' onClick={handleLogout}>
               Logout

@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import TableList from '../components/TableList'
+import OrderModal from '../components/OrderModal';
 const col = [
     'Id',
     'Customer',
@@ -11,6 +12,8 @@ const col = [
 ]
 function Order(props) {
     const [orders,setOrdders] = useState(null)
+    const [order,setOrder] = useState(null)
+    const [ismodal, setModal] = useState(false)
     const getOrder = useCallback(async()=>{
        try {
         const response = await fetch(`${import.meta.env.VITE_SERVER}/order`)
@@ -30,7 +33,7 @@ function Order(props) {
             })
             const data = await response.json()
             console.log(data)
-            getOrder()
+            getOrder()  
         } catch (error) {
             console.log(error)
         }
@@ -59,11 +62,16 @@ function Order(props) {
             console.log(error)
         }
     })
+    const handleValueUpdate = useCallback(item=>{
+        setOrder(item)
+        setModal(true)
+    },[])
     return (
         <div className='p-4'>
             <div className=''>
-                <TableList col={col} row={orders} handleDelete={handleDelete} type={'order'} handleAccept={handleAccept}/>
+                <TableList col={col} row={orders} handleDelete={handleDelete} type={'order'} handleAccept={handleAccept} handleValueUpdate={handleValueUpdate}/>
             </div>
+            <OrderModal isOpen = {ismodal} handleClose={setModal} data={order}/>
         </div>
     );
 }
