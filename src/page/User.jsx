@@ -134,7 +134,7 @@ function User(props) {
         <div className='p-4'>
             <div className='flex flex-col gap-4'>
                 <div className='grid grid-cols-2 gap-4'>
-                    <FromUpdate data={inputs} type={'user'} initValue={user} handleSubmit={handleSubmit}/>
+                   <div className='p-4 border border-slate-400 rounded-sm'> <FromUpdate data={inputs} type={'user'} initValue={user} handleSubmit={handleSubmit}/></div>
                     <div>
                         <img src={user.image} alt="user-image" className='w-full h-full object-contain' />
                     </div>

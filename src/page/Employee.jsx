@@ -209,7 +209,7 @@ function Employee(props) {
         <div className='p-4'>
             <div className='flex flex-col gap-10'>
                 <div className='grid grid-cols-2 gap-4'>
-                    <div className='flex flex-col gap-2'>
+                    <div className='flex flex-col gap-2 p-4 border border-slate-400 rounded-sm'>
                         <div className='flex flex-col gap-2'>
                             <label htmlFor="producer">Position</label>
                             <select name="category" id="" className='border border-slate-300 py-1 px-2 rounded-sm' onChange={(e) => setEmployee({ ...employee, position: e.target.value })}>
@@ -225,8 +225,8 @@ function Employee(props) {
                     </div>
                 </div>
                 <div className='grid grid-cols-2 gap-4'>
-                    <div className='flex flex-col gap-2'>
-                    <div className='flex flex-col gap-2'>
+                    <div className='flex flex-col gap-2 p-4 border border-slate-400 rounded-sm'>
+                        <div className='flex flex-col gap-2 '>
                             <label htmlFor="producer">Position</label>
                             <select value={employeeUpdate.position} name="category" id="" className='border border-slate-300 py-1 px-2 rounded-sm' onChange={(e) => setEmployee({ ...employeeUpdate, position: e.target.value })}>
                                 <option value="Basic">Basic</option>
@@ -235,7 +235,7 @@ function Employee(props) {
                         </div>
                         <FromUpdate data={inputUpdate} handleSubmit={handleUpdate} initValue={employeeUpdate} handleValueUpdate={handleValueUpdate} type={'employee'} />
                     </div>
-                  
+
                     <div>
                         <img src={employeeUpdate.image} alt="employee-image" className='w-full h-full object-contain' />
                     </div>

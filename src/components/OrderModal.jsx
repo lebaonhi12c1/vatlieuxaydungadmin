@@ -2,24 +2,37 @@ import React from 'react';
 
 function OrderModal({ data, handleClose, isOpen }) {
     return (
-        isOpen && <div className='flex items-center justify-center bg-black/20 fixed inset-0'>
+        isOpen && <div className='flex overflow-auto items-center justify-center bg-black/20 fixed inset-0'>
             <div className='bg-white p-10 relative w-[60%]'>
                 <div className='flex flex-col gap-4'>
                     <div className='text-[24px] self-center'>Order details</div>
-                    <div className='flex flex-col gap-2'>
-                        <div className='font-bold'>Customer info:</div>
-                        <div className='flex gap-4'>
-                            <div className='w-[80px] h-[80px] overflow-hidden rounded-full shadow-2xl shadow-slate-400'>
-                                <img src={data.customerid.image} alt="w-full h-full object-cover " />
-                            </div>
-                            <div className='flex flex-col'>
-                                <div className='text-[16px] text-slate-500'>Id: {data.customerid._id || 'None'}</div>
-                                <div className='text-[16px] text-slate-500'>Name: {data.customerid.name || 'None'}</div>
-                                <div className='text-[16px] text-slate-500'>Email: {data.customerid.email || 'None'}</div>
-                                <div className='text-[16px] text-slate-500'>Phone: {data.customerid.phone || 'None'}</div>
+                   <div className='flex gap-10'>
+                        <div className='flex flex-col gap-2'>
+                            <div className='font-bold'>Customer info:</div>
+                            <div className='flex gap-4'>
+                                <div className='w-[80px] h-[80px] overflow-hidden rounded-full shadow-2xl shadow-slate-400'>
+                                    <img src={data.customerid.image} alt="w-full h-full object-cover " />
+                                </div>
+                                <div className='flex flex-col'>
+                                    <div className='text-[16px] text-slate-500'>Name: {data.customerid.name || 'None'}</div>
+                                    <div className='text-[16px] text-slate-500'>Email: {data.customerid.email || 'None'}</div>
+                                    <div className='text-[16px] text-slate-500'>Phone: {data.customerid.phone || 'None'}</div>
+                                    <div className='text-[16px] text-slate-500'>Id: {data.customerid.address || 'None'}</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                        <div className='flex flex-col gap-2 border-l px-4 border-slate-400'>
+                            <div className='font-bold'>Receiver info:</div>
+                            <div className='flex gap-4'>
+                                <div className='flex flex-col'>
+                                    <div className='text-[16px] text-slate-500'>Name: {data?.receiver?.name || 'None'}</div>
+                                    <div className='text-[16px] text-slate-500'>Email: {data?.receiver?.email || 'None'}</div>
+                                    <div className='text-[16px] text-slate-500'>Phone: {data?.receiver?.phone || 'None'}</div>
+                                     <div className='text-[16px] text-slate-500'>Phone: {data?.receiver?.address || 'None'}</div>
+                                </div>
+                            </div>
+                        </div>
+                   </div>
                     <div className='flex flex-col gap-2'>
                         <div className='font-bold'>Products:</div>
                         <div className='flex flex-col gap-2'>
